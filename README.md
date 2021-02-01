@@ -3,11 +3,10 @@ This is a JavaScript project, which prints a different combination of randomized
 
 ## General info
 The purpose of this project was to practice the knowledge of JavaScript synthax, arrays, objects, loops and functions.
-To complete the task I've used:
+To complete the task I've focused on objects:
 * an __object__ to store __arrays__ of different types of messages
-* a __factory function__ which returns an __object that has a method__ to create a combination of __randomized messages as a new array__
-* separate __variables__ for each type of message I need to include in the prediction and __use as arguments for the factory function__
-* another __function to format__ the array of messages returned from the factory function
+* a __getter__ for each type of messages to return a random message
+* an __object method__ to combine the randomly selected messages into a single one and print it
 
 ## Technologies
 * JavaScript
