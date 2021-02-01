@@ -11,6 +11,9 @@ To complete the task I've focused on objects:
 ## Technologies
 * JavaScript
 
+## Try it on Codepen 
+Visit [this link](https://codepen.io/atanasdim/pen/XWNJQKJ)
+
 ## Source:
 * The task is a part of the [Codecademy Full-stack Engineer Career Path](https://www.codecademy.com/learn/paths/full-stack-engineer-career-path)
 
