@@ -1,13 +1,13 @@
-// Step 1: Create object to store 3 types of messages
-// Step 2: Create factory function with 3 parameters which will create the final message
-// Step 3: Create function to generate a random number. It should take the length of an array as parameter and use it as a maximum value.
-// Step 4: Define 3 variables to pick a randomized messages from each category of predictions
-// Step 5: Call the factory function with the 3 variables as arguments and save the result to a new variable (this should have an array containing the 3 randomized messages)
-// Step 6: Format the final array of messages to be printed without commas and brackets
+// Step 1: Create function to generate a random number. It should take the length of an array as parameter and use it as a maximum value.
+function randomNumber(num) {
+    return Math.floor(Math.random() * num)
+};
 
-// Step 1: Create object to store 3 types of messages
+// Step 2: Create object to store 3 types of messages
+// Step 3: Create getter for each type of messages to return a random message
+// Step 4: Create object method to combine the randomly selected messages into a single one and print it
 const storedMessages = {
-    willBecome: [
+    _willBecome: [
         "an astronaut",
         "a magician",
         "a galactic explorer",
@@ -19,7 +19,7 @@ const storedMessages = {
         "an augmented reality artist",
         "a space farmer"
     ],
-    willBeAbleTo: [
+    _willBeAbleTo: [
         "teleport",
         "communicate via telepathy",
         "sing like Mariah",
@@ -31,7 +31,7 @@ const storedMessages = {
         "speak with animals",
         "change your age"
     ],
-    willOwn: [
+    _willOwn: [
         "a magic wand",
         "a space ship",
         "a space factory",
@@ -42,54 +42,34 @@ const storedMessages = {
         "a house robot",
         "a self running kitchen",
         "a moon"
-    ]
-};
+    ],
 
-// Step 2: Create factory function with 3 parameters which should have a method to return the combined messages 
-function predictionsFactory (become, able, own) {
-        return {
-        become: become,
-        able: able,
-        own: own,
-        predict () {
-            let messages = [
-                'In your next life:',
-                `\u2022 you will become ${this.become}.`,
-                `\u2022 you will be able to ${this.able}.`,
-                `\u2022 you will own ${this.own}.`
-            ];
+    get willBecome () {
+        let randWillBecome = this._willBecome[randomNumber(this._willBecome.length)];
+        return randWillBecome;
+    },
 
-            return messages;
-        }
+    get willBeAbleTo () {
+        let randWillBeAbleTo = this._willBeAbleTo[randomNumber(this._willBeAbleTo.length)];
+        return randWillBeAbleTo;
+    },
+
+    get willOwn () {
+        let randWillOwn = this._willOwn[randomNumber(this._willOwn.length)];
+        return randWillOwn;
+    },
+
+    predict () {
+        let message = [
+            'In your next life:',
+            `- you will become ${this.willBecome}.`,
+            `- you will be able to ${this.willBeAbleTo}.`,
+            `- you will own ${this.willOwn}.`
+        ];
+        let formattedMessage = message.join("\n")
+        return formattedMessage;
     }
 };
 
-// Step 3: Create function to generate a random number. It should take the length of an array as parameter and use it as a maximum value.
-function randomNumber(num) {
-    return Math.floor(Math.random() * num)
-};
-
-// Step 4: Define 3 variables to pick a randomized messages from each category of predictions
-const randomBecomeMsg = storedMessages.willBecome[randomNumber(storedMessages.willBecome.length)];
-const randomAbleToMsg = storedMessages.willBeAbleTo[randomNumber(storedMessages.willBeAbleTo.length)];
-const randomOwnMsg = storedMessages.willOwn[randomNumber(storedMessages.willOwn.length)];
-
-// Step 5: Call the factory function with the 3 variables as arguments and save the result 
-// to a new variable (this should return an array containing the 3 randomized messages)
-const predictionObject = predictionsFactory(randomBecomeMsg, randomAbleToMsg, randomOwnMsg)
-const predictionArray = predictionObject.predict();
-
-// Step 6: Format the final array of messages to be printed without commas and brackets
-function format (array) {
-    let formattedPrediction = array.join('\n')
-    console.log(formattedPrediction);
-};
-
-// Call the format function with the final array of messages
-format(predictionArray);
-
-
-
-
-
+console.log(storedMessages.predict());
 
